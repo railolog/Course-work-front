@@ -7,6 +7,9 @@ import CreateFight from './components/CreateFight/CreateFight.js';
 import BetPage from './components/BetPage/BetPage.js';
 import UserProfile from "./components/UserProfile/UserProfile";
 import RegistrationPage from "./components/StartPage/RegistrationPage";
+import axios from 'axios';
+
+axios.defaults.withCredentials = true;
 
 const App = () => {
     return (

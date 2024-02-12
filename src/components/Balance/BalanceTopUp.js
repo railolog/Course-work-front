@@ -13,7 +13,7 @@ const BalanceTopUp = () => {
         event.preventDefault();
         try {
             // Замените URL вашего API
-            await axios.post('http://backend-url.com/top-up', {
+            await axios.post('http://localhost:6969/payment', {
                 cardNumber,
                 expiryDate,
                 cvv,
