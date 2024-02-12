@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Login from './components/StartPage/Login.js';
+import BalanceTopUp from './components/Balance/BalanceTopUp.js';
+import MainPage from './components/MainPage/MainPage.js';
+import CreateFight from './components/CreateFight/CreateFight.js';
+import BetPage from './components/BetPage/BetPage.js';
+import UserProfile from "./components/UserProfile/UserProfile";
+import RegistrationPage from "./components/StartPage/RegistrationPage";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/register" element={<RegistrationPage />} />
+                <Route path="/top-up" element={<BalanceTopUp />} />
+                <Route path="/main" element={<MainPage />} />
+                <Route path="/create-fight" element={<CreateFight />} />
+                <Route path="/bet" element={<BetPage />} />
+                <Route path="/profile" element={<UserProfile />} />
+            </Routes>
+        </Router>
+    );
+};
 
 export default App;
