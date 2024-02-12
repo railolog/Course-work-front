@@ -14,8 +14,8 @@ const CreateFight = () => {
         // Загрузка данных о покемонах и местах проведения боев
         const fetchData = async () => {
             try {
-                const pokemonsResponse = await axios.get('http://backend-url.com/pokemons');
-                const locationsResponse = await axios.get('http://backend-url.com/locations');
+                const pokemonsResponse = await axios.get('http://localhost:6969/pokemons');
+                const locationsResponse = await axios.get('http://localhost:6969/locations');
                 setPokemons(pokemonsResponse.data.pokemons);
                 setLocations(locationsResponse.data.locations);
             } catch (error) {
@@ -29,12 +29,12 @@ const CreateFight = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://backend-url.com/fights', {
+            const response = await axios.post('http://localhost:6969/fights', {
                 firstPokemonId,
                 secondPokemonId,
                 locationId
             });
-            alert(`Бой создан. ID боя: ${response.data.fightId}`);
+            alert(`Бой создан. ID боя: ${response.data.id}`);
             // Очистка формы
             setFirstPokemonId('');
             setSecondPokemonId('');

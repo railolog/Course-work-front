@@ -14,7 +14,7 @@ const RegistrationPage = () => {
         event.preventDefault();
         try {
             // Здесь должен быть запрос к API для регистрации
-            await axios.post('http://backend-url.com/register', userData);
+            await axios.post('http://localhost:6969/auth/signup', userData);
             navigate('/login');
         } catch (error) {
             console.error('Ошибка при регистрации:', error);

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
-import { useNavigate, useLocation } from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 
 const BetPage = () => {
     const [betAmount, setBetAmount] = useState('');
@@ -15,12 +15,10 @@ const BetPage = () => {
             return;
         }
         try {
-            await axios.post('http://backend-url.com/bets/bet', {
-                bet: {
-                    fightId: fightId,
-                    credits: betAmount,
-                    firstPokemonChoosen: firstPokemonChoosen
-                }
+            await axios.post('http://localhost:6969/bets', {
+                fightId: fightId,
+                credits: betAmount,
+                firstPokemonChosen: firstPokemonChoosen
             });
             alert('Ставка сделана!');
         } catch (error) {
@@ -30,7 +28,7 @@ const BetPage = () => {
 
     const handleStartFight = async () => {
         try {
-            await axios.post('http://backend-url.com/fights/start', { fightId: fightId });
+            await axios.post(`http://localhost:6969/fights/start/${fightId}`);
             alert('Бой запущен!');
             navigate('/main');
         } catch (error) {
