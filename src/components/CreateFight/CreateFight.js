@@ -28,6 +28,12 @@ const CreateFight = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        if (!firstPokemonId || !secondPokemonId || !locationId) {
+            alert('Пожалуйста, заполните все поля.');
+            return;
+        }
+
         try {
             const response = await axios.post('http://localhost:6969/fights', {
                 firstPokemonId,
@@ -43,6 +49,10 @@ const CreateFight = () => {
         } catch (error) {
             alert('Ошибка при создании боя. Пожалуйста, попробуйте снова.');
         }
+    };
+
+    const handleReturn = () => {
+        navigate('/main'); // Перенаправление на главную страницу
     };
 
     return (
@@ -78,6 +88,7 @@ const CreateFight = () => {
                 </div>
                 <button type="submit">Создать бой</button>
             </form>
+            <button onClick={handleReturn}>Вернуться на главную страницу</button>
         </div>
     );
 };

@@ -37,7 +37,7 @@ const BalanceTopUp = () => {
                 <div>
                     <label>Номер карты:</label>
                     <input
-                        type="text"
+                        type="number"
                         value={cardNumber}
                         onChange={(e) => setCardNumber(e.target.value)}
                         required
@@ -55,7 +55,7 @@ const BalanceTopUp = () => {
                 <div>
                     <label>CVV:</label>
                     <input
-                        type="text"
+                        type="number"
                         value={cvv}
                         onChange={(e) => setCvv(e.target.value)}
                         required

@@ -4,9 +4,9 @@ import Login from './components/StartPage/Login.js';
 import BalanceTopUp from './components/Balance/BalanceTopUp.js';
 import MainPage from './components/MainPage/MainPage.js';
 import CreateFight from './components/CreateFight/CreateFight.js';
-import BetPage from './components/BetPage/BetPage.js';
 import UserProfile from "./components/UserProfile/UserProfile";
 import RegistrationPage from "./components/StartPage/RegistrationPage";
+import DetailedFightPage from './components/DetailedFightPage/DetailedFightPage.js';
 import axios from 'axios';
 
 axios.defaults.withCredentials = true;
@@ -20,8 +20,8 @@ const App = () => {
                 <Route path="/top-up" element={<BalanceTopUp />} />
                 <Route path="/main" element={<MainPage />} />
                 <Route path="/create-fight" element={<CreateFight />} />
-                <Route path="/bet" element={<BetPage />} />
                 <Route path="/profile" element={<UserProfile />} />
+                <Route path="/fight/:fightId" element={<DetailedFightPage />} />
             </Routes>
         </Router>
     );

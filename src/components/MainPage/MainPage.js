@@ -25,8 +25,8 @@ const MainPage = () => {
         fetchFightsAndBalance();
     }, []);
 
-    const handleBetClick = (fightId) => {
-        navigate('/bet', { state: { fightId: fightId } });
+    const handleFightClick = (fightId) => {
+        navigate(`/fight/${fightId}`);
     };
 
     const goToProfile = () => {
@@ -43,7 +43,7 @@ const MainPage = () => {
             <button onClick={() => navigate('/create-fight')}>Создать бой</button>
             <button onClick={() => navigate('/top-up')}>Пополнить баланс</button>
             {fights.map((fight) => (
-                <div key={fight.id}>
+                <div key={fight.id} className="fight-card" onClick={() => handleFightClick(fight.id)}>
                     <h3>Бой №{fight.id}</h3>
                     <p>Первый Покемон: {fight.firstPokemon.name} (Тип: {fight.firstPokemon.type}, Тренер: {fight.firstPokemon.trainer?.name})</p>
                     <p>Коэффициент на победу: {fight.coefficientFirst.toFixed(2)}</p>
@@ -51,7 +51,6 @@ const MainPage = () => {
                     <p>Коэффициент на победу: {fight.coefficientSecond.toFixed(2)}</p>
                     <p>Место проведения: {fight.location.name}</p>
                     <p>Статус боя: {fight.isCompleted ? 'Завершен' : 'Не завершен'}</p>
-                    <button onClick={() => handleBetClick(fight.id)}>Сделать ставку</button>
                 </div>
             ))}
         </div>

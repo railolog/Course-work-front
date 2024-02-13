@@ -1,9 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import {useNavigate} from "react-router-dom";
+import authService from "../StartPage/authService";
 
 const UserProfile = () => {
     const [user, setUser] = useState({ login: '', balance: 0 });
     const [bets, setBets] = useState([]);
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -22,6 +26,15 @@ const UserProfile = () => {
         fetchUserData();
     }, []);
 
+    const handleLogout = () => {
+        authService.logout();
+        navigate('/');
+    };
+
+    const handleReturn = () => {
+        navigate('/main'); // Перенаправление на главную страницу
+    };
+
     return (
         <div>
             <h2>Профиль пользователя</h2>
@@ -38,6 +51,8 @@ const UserProfile = () => {
                     {bet.fight.firstWon && <p>Победил покемон номер {bet.fight.firstWon ? 1 : 2}</p>}
                 </div>
             ))}
+            <button onClick={handleReturn}>Вернуться на главную страницу</button>
+            <button onClick={handleLogout}>Logout</button>
         </div>
     );
 };
