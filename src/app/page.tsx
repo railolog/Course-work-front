@@ -6,6 +6,9 @@ import {Fight, FightsMock} from "@/types/fights";
 import axios from "axios";
 import Link from "next/link";
 import Image from "next/image";
+import mainImage from '@/images/charmeleon.png';
+import secondaryImage from '@/images/absol.png';
+import RightArrow from "@/icons/arrow-circle-right.svg";
 
 export default function Home() {
   const [fights, setFights] = useState<Fight[]>(FightsMock);
@@ -21,7 +24,7 @@ export default function Home() {
   //         } catch (error) {
   //             console.error('Ошибка при получении данных:', error);
   //         }
-  //     };
+  //     }
   //
   //     fetchFightsAndBalance();
   // }, []);
@@ -36,15 +39,20 @@ export default function Home() {
             <div className={styles.subtitle}>
               Это возможность выиграть 500 000 рублей
             </div>
-            <button>Играть</button>
+            <button className={styles.button}>
+                Играть
+                <RightArrow className={styles.icon}/>
+            </button>
           </div>
-          <Image className={styles.mainImage} src={'/public/images/main_banner.png'} alt="Pokemons" width={500} height={200}/>
+            <div className={styles.images}>
+                <Image className={styles.mainImage} src={mainImage} alt="Pokemons" width={undefined} height={450}/>
+                <Image className={styles.secondaryImage} src={secondaryImage} alt="Pokemons" width={undefined} height={450}/>
+            </div>
         </div>
         <div className="top-bar">
           <div className="balance">Баланс: {userBalance.toFixed(2)} кредитов</div>
           <Link className="profile-icon" href="/profile">Профиль</Link>
         </div>
-        <h1>Главная страница</h1>
         <Link href="/create-fight">Создать бой</Link>
         <Link href="/top-up">Пополнить баланс</Link>
         {fights.map((fight) => (

@@ -6,11 +6,20 @@
   --block-bg-2: #1f2442;
   --block-bg-3: #2d2f50;
 
+  --accent-color-inset: #c57d13;
+  --accent-color: #fea41d;
+  --accent-color-shadow: rgba(254, 164, 29, 0.46);
+
   --main-text: #fcfbff;
   --caption-text: rgba(252, 251, 255, 0.45);
 
+  --font-size-xxl: 42px;
   --font-size-xl: 36px;
-  --font-size-s: 12px;
+  --font-size-l: 32px;
+  --font-size-m: 28px;
+  --font-size-s: 24px;
+  --font-size-xs: 20px;
+  --font-size-xxxs: 12px;
 }
 
 * {
@@ -25,7 +34,7 @@ body {
   background-color: var(--main-bg);
   color: var(--main-text);
   margin: 0;
-  padding: 20px;
+  padding: 48px;
 }
 
 html,
