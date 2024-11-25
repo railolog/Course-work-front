@@ -51,11 +51,14 @@ export default function Home() {
         </div>
         {/*<Link href="/create-fight">Создать бой</Link>*/}
         {/*<Link href="/top-up">Пополнить баланс</Link>*/}
-        <div className={styles.fights}>
-            {fights.map((fight) => (
-                <FightCard fight={fight} />
-            ))}
-        </div>
+          <div className={styles.fightsContainer}>
+              <div className={styles.fightsTitle}>Мои бои</div>
+              <div className={styles.fights}>
+                  {fights.map((fight) => (
+                      <FightCard fight={fight} key={fight.id}/>
+                  ))}
+              </div>
+          </div>
       </div>
   );
 }

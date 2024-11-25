@@ -35,8 +35,6 @@
 }
 
 .container {
-    margin: 8px;
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -48,7 +46,7 @@
     border-radius: 12px;
 
     height: 160px;
-    width: 300px;
+    width: 313px;
 }
 
 .pokemons {
@@ -65,7 +63,7 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    column-gap: 8px;
+    column-gap: 16px;
 }
 
 .coefficient {

@@ -1,12 +1,12 @@
 .container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
 }
 
 .banner {
-  margin: 32px 0 16px 0;
+  margin: 24px 0 16px 0;
 
   display: flex;
   flex-direction: row;
@@ -74,9 +74,24 @@
   fill: var(--main-text);
 }
 
+.fightsTitle {
+  font-size: var(--font-size-m);
+  text-align: center;
+  margin: 8px 0 16px 0;
+  width: 100%;
+}
+
 .fights {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  row-gap: 16px;
+  column-gap: 16px;
 }
 
 @media (max-width: 1340px) {
