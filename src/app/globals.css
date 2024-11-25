@@ -6,6 +6,7 @@
   --block-bg-1: #191d39;
   --block-bg-2: #1f2442;
   --block-bg-3: #2d2f50;
+  --block-bg-4: #43456a;
 
   --accent-color-inset: #c57d13;
   --accent-color: #fea41d;
@@ -27,7 +28,8 @@
   --font-size-s: 24px;
   --font-size-xs: 20px;
   --font-size-xxs: 16px;
-  --font-size-xxxs: 12px;
+  --font-size-xxxs: 14px;
+  --font-size-xxxxs: 12px;
 }
 
 * {
