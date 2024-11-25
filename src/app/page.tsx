@@ -8,11 +8,11 @@ import Link from "next/link";
 import Image from "next/image";
 import mainImage from '@/images/charmeleon.png';
 import secondaryImage from '@/images/absol.png';
-import RightArrow from "@/icons/arrow-circle-right.svg";
+import { RightArrowIcon } from "@/icons/index";
+import {FightCard} from "@/components/FightCard";
 
 export default function Home() {
   const [fights, setFights] = useState<Fight[]>(FightsMock);
-  const [userBalance, setUserBalance] = useState(5000);
 
   // useEffect(() => {
   //     const fetchFightsAndBalance = async () => {
@@ -41,7 +41,7 @@ export default function Home() {
             </div>
             <button className={styles.button}>
                 Играть
-                <RightArrow className={styles.icon}/>
+                <RightArrowIcon className={styles.icon}/>
             </button>
           </div>
             <div className={styles.images}>
@@ -49,24 +49,13 @@ export default function Home() {
                 <Image className={styles.secondaryImage} src={secondaryImage} alt="Pokemons" width={undefined} height={450}/>
             </div>
         </div>
-        <div className="top-bar">
-          <div className="balance">Баланс: {userBalance.toFixed(2)} кредитов</div>
-          <Link className="profile-icon" href="/profile">Профиль</Link>
+        {/*<Link href="/create-fight">Создать бой</Link>*/}
+        {/*<Link href="/top-up">Пополнить баланс</Link>*/}
+        <div className={styles.fights}>
+            {fights.map((fight) => (
+                <FightCard fight={fight} />
+            ))}
         </div>
-        <Link href="/create-fight">Создать бой</Link>
-        <Link href="/top-up">Пополнить баланс</Link>
-        {fights.map((fight) => (
-            <Link key={fight.id} className="fight-card" href={`/fight/${fight.id}`}>
-              <h3>Бой №{fight.id}</h3>
-              <p>Первый Покемон: {fight.firstPokemon.name} (Тип: {fight.firstPokemon.types.join(', ')}, Тренер: {fight.firstPokemon.trainer?.name})</p>
-              <p>Коэффициент на победу: {fight.coefficientFirst.toFixed(2)}</p>
-              <p>Второй Покемон: {fight.secondPokemon.name} (Тип: {fight.secondPokemon.types.join(', ')}, Тренер: {fight.secondPokemon.trainer?.name})</p>
-              <p>Коэффициент на победу: {fight.coefficientSecond.toFixed(2)}</p>
-              <p>Место проведения: {fight.location.name}</p>
-              <p>Статус боя: {fight.isCompleted ? 'Завершен' : 'Не завершен'}</p>
-              {fight.firstWon && <p>Победил покемон номер {fight.firstWon ? 1 : 2}</p>}
-            </Link>
-        ))}
       </div>
   );
 }
