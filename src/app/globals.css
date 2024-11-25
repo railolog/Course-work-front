@@ -2,6 +2,7 @@
 
 :root {
   --main-bg: #0e1327;
+  --block-bg-0: #141a32;
   --block-bg-1: #191d39;
   --block-bg-2: #1f2442;
   --block-bg-3: #2d2f50;
@@ -9,6 +10,12 @@
   --accent-color-inset: #c57d13;
   --accent-color: #fea41d;
   --accent-color-shadow: rgba(254, 164, 29, 0.46);
+
+  --won-color-shadow: rgba(244, 148, 4, 0.84);
+
+  --accept-color-inset: #04881d;
+  --accept-color: #06ba27;
+  --accept-color-shadow: rgba(6, 186, 39, 0.44);
 
   --main-text: #fcfbff;
   --caption-text: rgba(252, 251, 255, 0.45);
@@ -19,6 +26,7 @@
   --font-size-m: 28px;
   --font-size-s: 24px;
   --font-size-xs: 20px;
+  --font-size-xxs: 16px;
   --font-size-xxxs: 12px;
 }
 
@@ -34,7 +42,7 @@ body {
   background-color: var(--main-bg);
   color: var(--main-text);
   margin: 0;
-  padding: 48px;
+  padding: 24px;
 }
 
 html,
@@ -46,4 +54,19 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+button {
+  font-size: var(--font-size-xxs);
+  font-family: "Geologica", sans-serif;
+  font-weight: 300;
+  color: var(--main-text);
+
+  border: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
 }
