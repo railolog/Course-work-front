@@ -9,7 +9,7 @@ type PokemonProps = {
     won?: boolean;
 }
 
-export const Pokemon = ({name, type, image, won = false}: PokemonProps) => {
+export const Pokemon: React.FC<PokemonProps> = ({name, type, image, won = false}) => {
     return (
         <div className={`${styles.pokemonContainer} ${won ? styles.won : ""}`}>
             <Image className={styles.pokemonImage} height={32} width={32} src={image} alt="Pokemon image"/>

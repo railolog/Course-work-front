@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './styles.module.css';
 import {Pokemon} from "@/components/FightCard/elements/Pokemon";
 import PokeballImage from '@/images/pokeball.png';
@@ -8,7 +9,7 @@ type FightCardProps = {
     fight: Fight;
 }
 
-export const FightCard = ({ fight: { firstPokemon, secondPokemon, coefficientFirst, coefficientSecond, isCompleted, firstWon }}: FightCardProps) => {
+export const FightCard: React.FC<FightCardProps> = ({ fight: { firstPokemon, secondPokemon, coefficientFirst, coefficientSecond, isCompleted, firstWon }}) => {
     return (
         <div className={styles.container}>
             <div className={styles.pokemons}>
