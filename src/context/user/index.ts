@@ -12,7 +12,7 @@ interface UserContextProps {
 export const useUser = (): UserContextProps => {
     const context = useContext(UserContext);
     if (!context) {
-        throw new Error('useFights must be used within an FightsProvider');
+        throw new Error('useUser must be used within an UserProvider');
     }
     return context;
 };

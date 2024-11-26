@@ -4,6 +4,8 @@ import {Header} from "@/components/Header";
 import {AuthProvider} from "@/context/auth/AuthProvider";
 import {FightsProvider} from "@/context/fight/FightProvider";
 import {UserProvider} from "@/context/user/UserProvider";
+import {SideBar} from "@/components/SideBar";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "Pokebet",
@@ -18,14 +20,17 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body>
-      <AuthProvider>
-          <FightsProvider>
-              <UserProvider>
+      <UserProvider>
+          <AuthProvider>
+              <FightsProvider>
                   <Header />
-                  {children}
-              </UserProvider>
-          </FightsProvider>
-      </AuthProvider>
+                  <div className="content">
+                      <SideBar />
+                      {children}
+                  </div>
+              </FightsProvider>
+          </AuthProvider>
+      </UserProvider>
       </body>
     </html>
   );
