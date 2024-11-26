@@ -7,9 +7,9 @@ import mainImage from '@/images/charmeleon.png';
 import secondaryImage from '@/images/absol.png';
 import { RightArrowIcon } from "@/icons/index";
 import {FightCard} from "@/components/FightCard";
-import {useAuth} from "@/context/auth/auth";
+import {useAuth} from "@/context/auth";
 import {AuthModal} from "@/components/modals/AuthModal";
-import {useFights} from "@/context/fight/fight";
+import {useFights} from "@/context/fight";
 
 export default function Home() {
     const { isAuthenticated } = useAuth();

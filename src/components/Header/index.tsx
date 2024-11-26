@@ -7,13 +7,14 @@ import Image from "next/image";
 import { ProfileIcon, AddIcon } from "@/icons/index";
 import DollarImg from '@/images/dollar.png';
 import LogoImg from '@/images/star.png';
-import {useAuth} from "@/context/auth/auth";
+import {useAuth} from "@/context/auth";
 import {AuthModal} from "@/components/modals/AuthModal";
+import {useUser} from "@/context/user";
 
 export const Header: React.FC = () => {
-    const { isAuthenticated, username, logout } = useAuth();
+    const { isAuthenticated, logout } = useAuth();
+    const { balance, login } = useUser();
 
-    const [userBalance, setUserBalance] = useState(5000);
     const [showModal, setShowModal] = useState<boolean>(false);
 
     return (
@@ -27,7 +28,7 @@ export const Header: React.FC = () => {
                     <div className={styles.balance}>
                         <div className={styles.remains}>
                             <Image src={DollarImg} height={16} width={16} alt="Dollar image"/>
-                            {userBalance.toFixed(2)}
+                            {balance.toFixed(2)}
                         </div>
                         <button className={styles.button}>
                             <AddIcon className={styles.icon}/>
@@ -41,7 +42,7 @@ export const Header: React.FC = () => {
                 {isAuthenticated ? (
                     <div className={styles.profileContainer}>
                         <Link className={styles.profile} href="/profile">
-                            {username}
+                            {login}
                             <ProfileIcon className={styles.icon}/>
                         </Link>
                         <button className={styles.login} onClick={logout}>

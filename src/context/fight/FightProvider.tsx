@@ -1,7 +1,7 @@
 "use client"
 
 import React, {ReactNode, useState} from "react";
-import { FightContext } from "./fight";
+import { FightContext } from "./index";
 import {Fight} from "@/types/fights";
 import fightService from "@/service/fight";
 

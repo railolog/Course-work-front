@@ -2,7 +2,7 @@
 
 import React, {ReactNode, useEffect, useState} from "react";
 import authService, {cookieManager} from "@/service/auth";
-import { AuthContext } from "./auth";
+import { AuthContext } from "./index";
 
 type AuthProviderProps = {
     children: ReactNode;

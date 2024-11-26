@@ -1,6 +1,6 @@
-import axios from "axios";
 import {User} from "@/types/user";
 import {BASE_URL} from "@/constants/url";
+import axiosInstance from "@/service/index";
 
 type UserService = {
     userInfo: () => Promise<User>;
@@ -11,7 +11,7 @@ type UserService = {
 const userService: UserService = {
     topUp: async (amount: number): Promise<void> => {
         try {
-            await axios.post(`${BASE_URL}/payment`, {
+            await axiosInstance.post(`${BASE_URL}/payment`, {
                 amount
             });
         } catch (error) {
@@ -21,7 +21,7 @@ const userService: UserService = {
 
     userInfo: async (): Promise<User> => {
         try {
-            const response = await axios.get(`${BASE_URL}/user/me`);
+            const response = await axiosInstance.get(`${BASE_URL}/user/me`);
             return response.data;
         } catch (error) {
             throw error;
@@ -30,10 +30,12 @@ const userService: UserService = {
 
     userBalance: async (): Promise<number> => {
         try {
-            const response = await axios.get(`${BASE_URL}/user/balance`);
+            const response = await axiosInstance.get(`${BASE_URL}/user/balance`);
             return response.data.balance;
         } catch (error) {
             throw error;
         }
     }
 }
+
+export default userService;

@@ -3,6 +3,7 @@ import "./globals.css";
 import {Header} from "@/components/Header";
 import {AuthProvider} from "@/context/auth/AuthProvider";
 import {FightsProvider} from "@/context/fight/FightProvider";
+import {UserProvider} from "@/context/user/UserProvider";
 
 export const metadata: Metadata = {
   title: "Pokebet",
@@ -19,8 +20,10 @@ export default function RootLayout({
       <body>
       <AuthProvider>
           <FightsProvider>
-              <Header />
-              {children}
+              <UserProvider>
+                  <Header />
+                  {children}
+              </UserProvider>
           </FightsProvider>
       </AuthProvider>
       </body>
