@@ -1,38 +1,25 @@
 "use client"
 
 import styles from "./page.module.css";
-import React, { useState } from "react";
-import {Fight, FightsMock} from "@/types/fights";
+import React, {useState} from "react";
 import Image from "next/image";
 import mainImage from '@/images/charmeleon.png';
 import secondaryImage from '@/images/absol.png';
 import { RightArrowIcon } from "@/icons/index";
 import {FightCard} from "@/components/FightCard";
-import {useAuth} from "@/context/auth";
+import {useAuth} from "@/context/auth/auth";
 import {AuthModal} from "@/components/modals/AuthModal";
+import {useFights} from "@/context/fight/fight";
 
 export default function Home() {
-    const { isAuthenticated, register } = useAuth();
+    const { isAuthenticated } = useAuth();
+    const { fights } = useFights();
 
-    const [fights, setFights] = useState<Fight[]>(FightsMock);
     const [showModal, setShowModal] = useState<boolean>(false);
 
-  // useEffect(() => {
-  //     const fetchFightsAndBalance = async () => {
-  //         try {
-  //             const fightsResponse = await axios.get('http://localhost:6969/fights');
-  //             setFights(fightsResponse.data.fights);
-  //             const userBalanceResponse = await axios.get(`http://localhost:6969/user/balance`);
-  //             setUserBalance(userBalanceResponse.data.balance);
-  //         } catch (error) {
-  //             console.error('Ошибка при получении данных:', error);
-  //         }
-  //     }
-  //
-  //     fetchFightsAndBalance();
-  // }, []);
+    const emptySubtitle = isAuthenticated ? "Здесь будут отображаться проведенные бои, время начать сражаться!" : "Здесь будут отображаться проведенные бои, зарегистрируйтесь или войти, чтобы начать";
 
-  return (
+    return (
       <>
           <div className={styles.container}>
               <div className={styles.banner}>
@@ -55,9 +42,7 @@ export default function Home() {
                              height={450}/>
                   </div>
               </div>
-              {/*<Link href="/create-fight">Создать бой</Link>*/}
-              {/*<Link href="/top-up">Пополнить баланс</Link>*/}
-              {isAuthenticated ? (
+              {isAuthenticated && fights.length ? (
                   <div className={styles.fightsContainer}>
                       <div className={styles.fightsTitle}>Мои бои</div>
                       <div className={styles.fights}>
@@ -67,14 +52,14 @@ export default function Home() {
                       </div>
                   </div>
               ) : (
-                  <div className={styles.emptyContainer} onClick={() => setShowModal(true)}>
+                  <div className={styles.emptyContainer}>
                       <p className={styles.emptyTitle}>Начните проводить бои прямо сейчас!</p>
-                      <p className={styles.emptyText}>Здесь будут отображаться проведенные бои, зарегистрируйтесь или войти, чтобы начать</p>
-                      <button className={styles.button}>Войти</button>
+                      <p className={styles.emptyText}>{emptySubtitle}</p>
+                      {!isAuthenticated && <button className={styles.button} onClick={() => setShowModal(true)}>Войти</button>}
                   </div>
               )}
           </div>
           {showModal && <AuthModal onClose={() => setShowModal(false)}/>}
       </>
-  );
+    );
 }

@@ -7,7 +7,7 @@ import Image from "next/image";
 import { ProfileIcon, AddIcon } from "@/icons/index";
 import DollarImg from '@/images/dollar.png';
 import LogoImg from '@/images/star.png';
-import {useAuth} from "@/context/auth";
+import {useAuth} from "@/context/auth/auth";
 import {AuthModal} from "@/components/modals/AuthModal";
 
 export const Header: React.FC = () => {

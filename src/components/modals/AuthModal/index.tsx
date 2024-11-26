@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import styles from './styles.module.css';
 import authService from "@/service/auth";
 import {CrossIcon} from "@/icons/index";
-import {useAuth} from "@/context/auth";
+import {useAuth} from "@/context/auth/auth";
+import {useFights} from "@/context/fight/fight";
 
 interface AuthModalProps {
     onClose: () => void;
@@ -12,6 +13,7 @@ interface AuthModalProps {
 
 export const AuthModal: React.FC<AuthModalProps> = ({ onClose }) => {
     const { login, register } = useAuth();
+    const { getFights } = useFights();
 
     const [isLogin, setIsLogin] = useState<boolean>(true);
     const [username, setUsername] = useState<string>('');
@@ -31,6 +33,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ onClose }) => {
             } else {
                 await register(username, password);
             }
+            getFights();
             onClose();
         } catch (err) {
             setError('Ошибка. Пожалуйста, проверьте ваши данные.');

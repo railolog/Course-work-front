@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import {Header} from "@/components/Header";
-import {AuthProvider} from "@/context/AuthProvider";
+import {AuthProvider} from "@/context/auth/AuthProvider";
+import {FightsProvider} from "@/context/fight/FightProvider";
 
 export const metadata: Metadata = {
   title: "Pokebet",
@@ -17,8 +18,10 @@ export default function RootLayout({
     <html lang="ru">
       <body>
       <AuthProvider>
-        <Header />
-        {children}
+          <FightsProvider>
+              <Header />
+              {children}
+          </FightsProvider>
       </AuthProvider>
       </body>
     </html>
