@@ -79,6 +79,9 @@
 }
 
 .fightsContainer, .emptyContainer {
+  width: 100%;
+  padding: 16px;
+
   background-color: var(--block-bg-0);
   border-radius: 16px;
 }
