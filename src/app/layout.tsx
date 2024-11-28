@@ -21,15 +21,15 @@ export default function RootLayout({
     <html lang="ru">
       <body>
       <UserProvider>
-          <AuthProvider>
-              <FightsProvider>
+          <FightsProvider>
+              <AuthProvider>
                   <Header />
                   <div className="content">
                       <SideBar />
                       {children}
                   </div>
-              </FightsProvider>
-          </AuthProvider>
+              </AuthProvider>
+          </FightsProvider>
       </UserProvider>
       </body>
     </html>

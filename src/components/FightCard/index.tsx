@@ -18,8 +18,8 @@ export const FightCard: React.FC<FightCardProps> = ({ fight: { firstPokemon, sec
                 <Pokemon name={secondPokemon.name} type={secondPokemon.types[0]} image={UltraballImage} won={!firstWon}/>
             </div>
             <div className={styles.coefficients}>
-                <div className={styles.coefficient}>{coefficientFirst}</div>
-                <div className={styles.coefficient}>{coefficientSecond}</div>
+                <div className={styles.coefficient}>{coefficientFirst.toFixed(2)}</div>
+                <div className={styles.coefficient}>{coefficientSecond.toFixed(2)}</div>
             </div>
         </div>
     )
