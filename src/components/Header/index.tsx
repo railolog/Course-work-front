@@ -41,7 +41,7 @@ export const Header: React.FC = () => {
                 {/*TODO: подумать как сюда вписать выход из системы*/}
                 {isAuthenticated ? (
                     <div className={styles.profileContainer}>
-                        <Link className={styles.profile} href="/profile">
+                        <Link className={styles.profile} href="/src/app/profile/page">
                             {login}
                             <ProfileIcon className={styles.icon}/>
                         </Link>

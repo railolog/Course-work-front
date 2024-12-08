@@ -30,6 +30,6 @@
     border-radius: 0 0 16px 16px;
 }
 
-.link:hover {
+.link:hover, .active {
     background-color: var(--block-bg-2);
 }

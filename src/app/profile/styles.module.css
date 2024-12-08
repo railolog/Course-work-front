@@ -1,0 +1,40 @@
+.container {
+    background-color: var(--block-bg-0);
+    border-radius: 16px;
+    padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+
+    background-color: var(--block-bg-1);
+    width: 100%;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.login, .balance, .money {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 8px;
+}
+
+.logout {
+    width: 120px;
+    background-color: var(--block-bg-2);
+    border-radius: 8px;
+    height: 36px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
