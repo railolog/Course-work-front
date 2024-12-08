@@ -37,9 +37,9 @@ export default function Home() {
                   </div>
                   <div className={styles.images}>
                       <Image className={styles.mainImage} src={mainImage} alt="Pokemons" width={undefined}
-                             height={450}/>
+                             height={400}/>
                       <Image className={styles.secondaryImage} src={secondaryImage} alt="Pokemons" width={undefined}
-                             height={450}/>
+                             height={400}/>
                   </div>
               </div>
               {isAuthenticated && fights.length ? (

@@ -30,6 +30,7 @@
   flex-direction: column;
   row-gap: 16px;
 
+  min-width: 350px;
   max-width: 600px;
   text-wrap: balance;
 }
@@ -46,14 +47,25 @@
 .images {
   display: flex;
   flex-direction: row;
-  column-gap: -24px;
+  /*column-gap: -12px;*/
 
-  margin-top: -110px;
+  margin-top: -60px;
+  margin-right: -50px;
+}
+
+@media (max-width: 1340px) {
+  .images {
+    margin-right: -120px;
+  }
+
+  .title {
+    font-size: var(--font-size-xl);
+  }
 }
 
 .mainImage {
   z-index: 10;
-  margin-right: -220px;
+  margin-right: -250px;
 }
 
 .button {
@@ -133,9 +145,5 @@
   width: 500px;
 }
 
-@media (max-width: 1340px) {
-  .images {
-    margin-right: -120px;
-  }
-}
+
 
