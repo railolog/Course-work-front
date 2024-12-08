@@ -1,0 +1,52 @@
+.fightsContainer, .emptyContainer {
+    width: 100%;
+    padding: 16px;
+
+    background-color: var(--block-bg-0);
+    border-radius: 16px;
+}
+
+.fightsTitle {
+    font-size: var(--font-size-m);
+    text-align: center;
+    margin: 8px 0 16px 0;
+    width: 100%;
+}
+
+.fightsSubtitle {
+    font-size: var(--font-size-xxs);
+    color: var(--caption-text);
+    margin: 0 0 16px 0;
+}
+
+.fights {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    row-gap: 16px;
+    column-gap: 16px;
+}
+
+.emptyContainer {
+    width: 100%;
+    height: 100%;
+    padding: 64px 0 64px 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 16px;
+    text-align: center;
+}
+
+.emptyTitle {
+    font-size: var(--font-size-m);
+    text-wrap: balance;
+    width: 500px;
+}
