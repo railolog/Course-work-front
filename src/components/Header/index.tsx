@@ -11,6 +11,7 @@ import {useAuth} from "@/context/auth";
 import {AuthModal} from "@/components/modals/AuthModal";
 import {useUser} from "@/context/user";
 import {redirect} from "next/navigation";
+import {PROFILE_URL, TOP_UP_URL} from "@/constants/url";
 
 export const Header: React.FC = () => {
     const { isAuthenticated, logout } = useAuth();
@@ -31,7 +32,7 @@ export const Header: React.FC = () => {
                             <Image src={DollarImg} height={16} width={16} alt="Dollar image"/>
                             {balance.toFixed(2)}
                         </div>
-                        <button className={styles.button} onClick={() => redirect('/top-up')}>
+                        <button className={styles.button} onClick={() => redirect(TOP_UP_URL)}>
                             <AddIcon className={styles.icon}/>
                             Пополнить
                         </button>
@@ -42,7 +43,7 @@ export const Header: React.FC = () => {
                 {/*TODO: подумать как сюда вписать выход из системы*/}
                 {isAuthenticated ? (
                     <div className={styles.profileContainer}>
-                        <Link className={styles.profile} href="/src/app/profile/page">
+                        <Link className={styles.profile} href={PROFILE_URL}>
                             {login}
                             <ProfileIcon className={styles.icon}/>
                         </Link>

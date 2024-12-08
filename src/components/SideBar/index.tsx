@@ -3,6 +3,7 @@
 import Link from "next/link";
 import styles from './styles.module.css';
 import { usePathname } from 'next/navigation'
+import {BETS_URL, CREATE_FIGHT_URL, FIGHTS_URL, POKEMONS_URL, PROFILE_URL, TOP_UP_URL} from "@/constants/url";
 
 export const SideBar = () => {
     const pathname = usePathname();
@@ -17,22 +18,22 @@ export const SideBar = () => {
 
     return (
         <div className={styles.container}>
-            <Link className={getClassName("/profile")} href="/profile">
+            <Link className={getClassName(PROFILE_URL)} href={PROFILE_URL}>
                 Мой профиль
             </Link>
-            <Link className={getClassName("/top-up")} href="/top-up">
+            <Link className={getClassName(TOP_UP_URL)} href={TOP_UP_URL}>
                 Пополнить счёт
             </Link>
-            <Link className={getClassName("/bets")} href="/bets">
+            <Link className={getClassName(BETS_URL)} href={BETS_URL}>
                 Мои ставки
             </Link>
-            <Link className={getClassName("/fights")} href="/fights">
+            <Link className={getClassName(FIGHTS_URL)} href={FIGHTS_URL}>
                 Мои бои
             </Link>
-            <Link className={getClassName("/create-fight")} href="/create-fight">
+            <Link className={getClassName(CREATE_FIGHT_URL)} href={CREATE_FIGHT_URL}>
                 Создать бой
             </Link>
-            <Link className={getClassName("/pokemons")} href="/pokemons">
+            <Link className={getClassName(POKEMONS_URL)} href={POKEMONS_URL}>
                 Все покемоны
             </Link>
         </div>
