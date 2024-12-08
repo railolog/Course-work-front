@@ -10,6 +10,7 @@ import LogoImg from '@/images/star.png';
 import {useAuth} from "@/context/auth";
 import {AuthModal} from "@/components/modals/AuthModal";
 import {useUser} from "@/context/user";
+import {redirect} from "next/navigation";
 
 export const Header: React.FC = () => {
     const { isAuthenticated, logout } = useAuth();
@@ -30,7 +31,7 @@ export const Header: React.FC = () => {
                             <Image src={DollarImg} height={16} width={16} alt="Dollar image"/>
                             {balance.toFixed(2)}
                         </div>
-                        <button className={styles.button}>
+                        <button className={styles.button} onClick={() => redirect('/top-up')}>
                             <AddIcon className={styles.icon}/>
                             Пополнить
                         </button>

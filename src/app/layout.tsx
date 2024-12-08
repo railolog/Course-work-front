@@ -6,6 +6,7 @@ import {FightsProvider} from "@/context/fight/FightProvider";
 import {UserProvider} from "@/context/user/UserProvider";
 import {SideBar} from "@/components/SideBar";
 import React from "react";
+import {Toaster} from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Pokebet",
@@ -23,6 +24,10 @@ export default function RootLayout({
       <UserProvider>
           <FightsProvider>
               <AuthProvider>
+                  <Toaster
+                      position="bottom-right"
+                      reverseOrder={false}
+                  />
                   <Header />
                   <div className="content">
                       <SideBar />

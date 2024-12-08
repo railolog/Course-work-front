@@ -1,0 +1,90 @@
+.container {
+    background-color: var(--block-bg-0);
+    border-radius: 16px;
+    padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.form {
+    background-color: var(--block-bg-2);
+    border-radius: 8px;
+    padding: 16px;
+
+    width: 400px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    row-gap: 16px;
+}
+
+.balance, .money {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 8px;
+}
+
+.input {
+   width: 100%;
+}
+
+.input label {
+    font-size: var(--font-size-xxxs);
+    color: var(--caption-text);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input input {
+    width: 100%;
+    padding: 8px;
+    background-color: var(--block-bg-4);
+    border: 1px solid var(--block-bg-3);
+    border-radius: 8px;
+
+    color: var(--main-text);
+}
+
+.input input::placeholder {
+    color: var(--caption-text);
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 8px;
+}
+
+.submitButton {
+    background-color: var(--accept-color);
+    width: 200px;
+    height: 36px;
+    border-radius: 8px;
+
+    box-shadow: none;
+    transition: all 0.4s ease;
+    /*box-shadow: inset -5px -5px 15px var(--accept-color-inset);*/
+}
+
+.submitButton:hover {
+    box-shadow: 0 0 20px var(--accept-color-shadow);
+}
+
+.randomButton {
+    width: 100%;
+    background-color: var(--block-bg-4);
+    border-radius: 8px;
+    height: 36px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}

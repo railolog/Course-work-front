@@ -1,6 +1,6 @@
 "use client"
 
-import styles from './styles.module.css';
+import styles from './page.module.css';
 import {useUser} from "@/context/user";
 import Image from "next/image";
 import DollarImg from "@/images/dollar.png";
@@ -25,9 +25,9 @@ export default function Page() {
                 </div>
                 <div className={styles.balance}>Баланс:
                     <span className={styles.money}>
-                    <Image src={DollarImg} height={16} width={16} alt="Dollar image"/>
+                        <Image src={DollarImg} height={16} width={16} alt="Dollar image"/>
                         {balance.toFixed(2)}
-                </span>
+                    </span>
                 </div>
             </div>
             <button className={styles.logout} onClick={onLogoutClick}>

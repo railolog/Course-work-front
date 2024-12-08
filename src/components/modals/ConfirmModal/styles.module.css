@@ -1,8 +1,4 @@
-.title {
-    font-size: var(--font-size-s);
-}
-
-.modal form {
+.form {
     display: flex;
     flex-direction: column;
     row-gap: 8px;
@@ -15,6 +11,7 @@
     margin-bottom: 5px;
 }
 
+/*TODO: вынести стили для инпутов в общие*/
 .textField input {
     width: 100%;
     padding: 8px;
@@ -23,6 +20,10 @@
     border-radius: 8px;
 
     color: var(--main-text);
+}
+
+.title {
+    font-size: var(--font-size-xxs);
 }
 
 .error {
@@ -44,15 +45,4 @@
 
 .submitButton:hover {
     box-shadow: 0 0 20px var(--accent-color-shadow);
-}
-
-.toggleButton {
-    background: none;
-    border: none;
-    color: var(--accent-color);
-    cursor: pointer;
-    margin-top: 10px;
-    font-size: var(--font-size-xxxs);
-    text-align: center;
-    display: block;
 }
