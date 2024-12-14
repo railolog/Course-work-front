@@ -107,6 +107,10 @@
     background-color: var(--block-bg-2);
 }
 
+.button:disabled:hover {
+    box-shadow: none;
+}
+
 .betButton {
     width: 100%;
     padding: 8px 16px;

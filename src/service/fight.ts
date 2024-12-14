@@ -5,6 +5,7 @@ import axiosInstance from "@/service/index";
 type FightService = {
     userFights: () => Promise<Fight[]>;
     createFight: (input: createFightInput) =>  Promise<Fight>;
+    startFight: (id: number) => Promise<Fight>;
     fightById: (id: number) => Promise<Fight>;
 }
 
@@ -34,6 +35,14 @@ const fightService: FightService = {
     createFight: async (input: createFightInput): Promise<Fight> => {
         try {
             const response = await axiosInstance.post(`${BASE_URL}/fights`, input);
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
+    },
+    startFight: async (id: number): Promise<Fight> => {
+        try {
+            const response = await axiosInstance.post(`${BASE_URL}/fights/start/${id}`);
             return response.data;
         } catch (error) {
             throw error;

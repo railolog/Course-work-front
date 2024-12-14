@@ -66,8 +66,16 @@ export const FightsProvider: React.FC<AuthProviderProps> = ({ children }) => {
         }
     };
 
+    const startFight = async (id: number): Promise<Fight> => {
+        try {
+            return await fightService.startFight(id);
+        } catch (error) {
+            throw error;
+        }
+    };
+
     return (
-        <FightContext.Provider value={{ fights, pokemons, locations, getFights, createFight, getPokemons, getLocations, fightById, getFightById }}>
+        <FightContext.Provider value={{ fights, pokemons, locations, getFights, createFight, getPokemons, getLocations, fightById, getFightById, startFight }}>
             {children}
         </FightContext.Provider>
     );

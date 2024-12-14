@@ -10,6 +10,7 @@ interface FightContextProps {
     locations: Location[];
     getFights: () => Promise<Fight[]>;
     createFight: (input: createFightInput) => Promise<Fight>;
+    startFight: (id: number) => Promise<Fight>;
     getPokemons: () => Promise<Pokemon[]>;
     getLocations: () => Promise<Location[]>;
     fightById: Fight | undefined;
