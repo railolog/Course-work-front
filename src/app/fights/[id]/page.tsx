@@ -3,12 +3,12 @@
 import styles from './page.module.css';
 import {useFights} from "@/context/fight";
 import React, {useEffect} from "react";
-import Image from "next/image";
 import PokeballImage from '@/images/pokeball.png';
 import UltraballImage from '@/images/ultra-ball.png';
 import {AngleRightIcon} from "@/icons/index";
 import {redirect} from "next/navigation";
 import {FIGHTS_URL} from "@/constants/url";
+import {PokemonCard} from "@/components/PokemonCard";
 
 export default function Page({ params }: { params: Promise<{ id: number }> }) {
     const {fightById, getFightById} = useFights();
@@ -73,45 +73,21 @@ export default function Page({ params }: { params: Promise<{ id: number }> }) {
                     </div>
                 </div>
                 <div className={styles.pokemons}>
-                    <div className={`${styles.pokemon} ${fightById?.firstWon ? styles.won : ''}`}>
-                        <div className={styles.mainInfo}>
-                            <Image className={styles.pokemonImage} height={80} width={80} src={PokeballImage}
-                                   alt="Pokemon image"/>
-                            <div className={styles.name}>
-                                {fightById?.firstPokemon?.name ?? 'Неизвестный'}
-                            </div>
-                            <div className={styles.types}>
-                                {fightById?.firstPokemon?.types.join(', ') ?? 'Стихии неизвестны'}
-                            </div>
-                            <div className={styles.trainer}>
-                                Тренер: {fightById?.firstPokemon?.trainer?.name ?? 'Тренер неизвестен'}
-                            </div>
-                        </div>
-                        <div className={styles.coefficient}>
-                            {fightById?.coefficientFirst?.toFixed(2) ?? 0}
-                        </div>
-                    </div>
+                    <PokemonCard
+                        pokemon={fightById?.firstPokemon}
+                        image={PokeballImage}
+                        coefficient={fightById?.coefficientFirst ?? 0}
+                        won={fightById?.firstWon}
+                    />
                     <div className={styles.divider}>
                         vs
                     </div>
-                    <div className={`${styles.pokemon} ${fightById?.firstWon ? '' : styles.won}`}>
-                        <div className={styles.mainInfo}>
-                            <Image className={styles.pokemonImage} height={80} width={80} src={UltraballImage}
-                                   alt="Pokemon image"/>
-                            <div className={styles.name}>
-                                {fightById?.secondPokemon?.name ?? 'Неизвестный'}
-                            </div>
-                            <div className={styles.types}>
-                                {fightById?.secondPokemon?.types.join(', ') ?? 'Стихии неизвестны'}
-                            </div>
-                            <div className={styles.trainer}>
-                                Тренер: {fightById?.secondPokemon?.trainer?.name ?? 'Тренер неизвестен'}
-                            </div>
-                        </div>
-                        <div className={styles.coefficient}>
-                            {fightById?.coefficientSecond?.toFixed(2) ?? 0}
-                        </div>
-                    </div>
+                    <PokemonCard
+                        pokemon={fightById?.secondPokemon}
+                        image={UltraballImage}
+                        coefficient={fightById?.coefficientSecond ?? 0}
+                        won={!fightById?.firstWon}
+                    />
                 </div>
             </div>
         </div>
