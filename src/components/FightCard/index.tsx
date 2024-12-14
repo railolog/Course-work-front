@@ -19,21 +19,17 @@ export const FightCard: React.FC<FightCardProps> = ({ fight: { id, firstPokemon,
     return (
         <div className={styles.container} onClick={() => openFightCard(id)}>
             <div className={styles.pokemons}>
-                <Pokemon name={firstPokemon.name} type={firstPokemon.types?.join(', ')} image={PokeballImage} won={isCompleted && firstWon}/>
+                <Pokemon name={firstPokemon.name} type={firstPokemon.types?.join(', ')} image={PokeballImage} won={isCompleted && firstWon} coefficient={coefficientFirst}/>
                 <p>vs</p>
-                <Pokemon name={secondPokemon.name} type={secondPokemon.types?.join(', ')} image={UltraballImage} won={isCompleted && !firstWon}/>
-            </div>
-            <div className={styles.coefficients}>
-                <div className={styles.coefficient}>{coefficientFirst.toFixed(2)}</div>
-                <div className={styles.coefficient}>{coefficientSecond.toFixed(2)}</div>
+                <Pokemon name={secondPokemon.name} type={secondPokemon.types?.join(', ')} image={UltraballImage} won={isCompleted && !firstWon} coefficient={coefficientSecond}/>
             </div>
             {isCompleted ? (
                 <button disabled className={styles.button}>Завершен</button>
             ) : (
-                <>
+                <div className={styles.buttons}>
                     <button className={styles.button}>Начать бой</button>
                     <button className={styles.betButton}>Сделать ставку</button>
-                </>
+                </div>
             )}
         </div>
     )
