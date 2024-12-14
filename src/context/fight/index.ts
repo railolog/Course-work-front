@@ -4,6 +4,8 @@ import {Fight} from "@/types/fights";
 interface FightContextProps {
     fights: Fight[];
     getFights: () => Promise<Fight[]>;
+    fightById: Fight | undefined;
+    getFightById: (id: number) => Promise<Fight>;
 }
 
 export const useFights = (): FightContextProps => {

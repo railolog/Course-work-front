@@ -1,0 +1,164 @@
+.wrapper {
+    background-color: var(--block-bg-0);
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.navigationContainer, .navigation  {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    justify-content: flex-start;
+    column-gap: 8px;
+
+    color: var(--caption-text);
+    margin-bottom: 8px;
+}
+
+.here {
+    color: var(--accent-color);
+}
+
+.navigation {
+    cursor: pointer;
+}
+
+.navigation:hover {
+    text-decoration: underline;
+}
+
+.icon {
+    height: 20px;
+    width: 20px;
+    fill: var(--caption-text);
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    column-gap: 16px;
+}
+
+.pokemons {
+    display: grid;
+    grid-template-columns: 250px 30px 250px;
+    grid-column-gap: 16px;
+    align-items: center;
+    justify-items: center;
+}
+
+.pokemon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /*row-gap: 8px;*/
+
+    height: 100%;
+    width: 250px;
+    background-color: var(--block-bg-2);
+    border-radius: 16px;
+    padding: 16px;
+
+    text-align: center;
+}
+
+.mainInfo {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 8px;
+}
+
+.name {
+    font-size: var(--font-size-s);
+}
+
+.types {
+    font-size: var(--font-size-xxs);
+    font-style: italic;
+}
+
+.trainer {
+    color: var(--caption-text);
+}
+
+.pokemonImage {
+    border-radius: 50%;
+}
+
+.won .pokemonImage{
+    box-shadow: 0 0 20px var(--won-color-shadow);
+}
+
+.fightName .won {
+    color: var(--accent-color);
+    text-shadow: 0 0 20px var(--accent-color-shadow);
+}
+
+.divider {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--caption-text)
+}
+
+.coefficient {
+    justify-items: flex-start;
+    padding: 8px 16px;
+    background-color: var(--block-bg-3);
+    border-radius: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+.title {
+    color: var(--caption-text);
+    border-bottom: 1px solid var(--block-bg-3);
+    padding-bottom: 8px;
+}
+
+.title:last-child {
+    border: none;
+}
+
+.text {
+    margin-left: 8px;
+    color: var(--main-text);
+}
+
+.info {
+    /*min-width: 300px;*/
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    padding: 16px;
+    background-color: var(--block-bg-1);
+}
+
+.fightName {
+    font-size: var(--font-size-m);
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+@media (max-width: 1260px) {
+    .pokemons {
+        width: 100%;
+        grid-template-columns: 1fr 30px 1fr;
+    }
+
+    .pokemon {
+        width: 100%;
+        /*max-width: 250px;*/
+    }
+
+    .info {
+        width: 300px;
+    }
+}

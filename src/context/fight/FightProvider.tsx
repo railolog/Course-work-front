@@ -11,6 +11,7 @@ type AuthProviderProps = {
 
 export const FightsProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const [fights, setFights] = useState<Fight[]>([]);
+    const [fightById, setFightById] = useState<Fight>({} as Fight);
 
     const getFights = async () => {
         try {
@@ -22,8 +23,18 @@ export const FightsProvider: React.FC<AuthProviderProps> = ({ children }) => {
         }
     }
 
+    const getFightById = async (id: number) => {
+        try {
+            const fightResponse = await fightService.fightById(id);
+            setFightById(fightResponse);
+            return fightResponse;
+        } catch (error) {
+            throw error;
+        }
+    }
+
     return (
-        <FightContext.Provider value={{ fights, getFights }}>
+        <FightContext.Provider value={{ fights, getFights, fightById, getFightById }}>
             {children}
         </FightContext.Provider>
     );

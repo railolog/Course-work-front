@@ -4,14 +4,20 @@ import {Pokemon} from "@/components/FightCard/elements/Pokemon";
 import PokeballImage from '@/images/pokeball.png';
 import UltraballImage from '@/images/ultra-ball.png';
 import {Fight} from "@/types/fights";
+import {redirect} from "next/navigation";
+import {FIGHTS_URL} from "@/constants/url";
 
 type FightCardProps = {
     fight: Fight;
 }
 
-export const FightCard: React.FC<FightCardProps> = ({ fight: { firstPokemon, secondPokemon, coefficientFirst, coefficientSecond, isCompleted, firstWon }}) => {
+export const FightCard: React.FC<FightCardProps> = ({ fight: { id, firstPokemon, secondPokemon, coefficientFirst, coefficientSecond, isCompleted, firstWon }}) => {
+    function openFightCard(id: number) {
+        redirect(`${FIGHTS_URL}/${id}`);
+    }
+
     return (
-        <div className={styles.container}>
+        <div className={styles.container} onClick={() => openFightCard(id)}>
             <div className={styles.pokemons}>
                 <Pokemon name={firstPokemon.name} type={firstPokemon.types[0]} image={PokeballImage} won={firstWon}/>
                 <p>vs</p>
