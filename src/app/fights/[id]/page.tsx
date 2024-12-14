@@ -9,12 +9,26 @@ import {AngleRightIcon} from "@/icons/index";
 import {redirect} from "next/navigation";
 import {FIGHTS_URL} from "@/constants/url";
 import {PokemonCard} from "@/components/PokemonCard";
+import toast from "react-hot-toast";
+import {DEFAULT_TOAST_OPTIONS} from "@/constants/toast";
 
 export default function Page({ params }: { params: Promise<{ id: number }> }) {
-    const {fightById, getFightById} = useFights();
+    const {fightById, getFightById, startFight} = useFights();
 
     function goBack() {
         redirect(FIGHTS_URL);
+    }
+
+    async function startFightHandler(event: React.MouseEvent<HTMLButtonElement>) {
+        event.stopPropagation();
+        try {
+            const resolvedParams = await params;
+            const id = resolvedParams?.id;
+            await startFight(id);
+            await getFightById(id);
+        } catch (error) {
+            toast.error('Ошибка при запуске боя', DEFAULT_TOAST_OPTIONS);
+        }
     }
 
     useEffect(() => {
@@ -22,18 +36,14 @@ export default function Page({ params }: { params: Promise<{ id: number }> }) {
             try {
                 const resolvedParams = await params;
                 const id = resolvedParams?.id;
-                if (id) {
-                    await getFightById(id);
-                } else {
-                    console.error('ID is not defined in params');
-                }
+                await getFightById(id);
             } catch (error) {
-                console.error('Error fetching data:', error);
+                toast.error('Ошибка при загрузке данных', DEFAULT_TOAST_OPTIONS);
             }
         };
 
         fetchData();
-    }, [params, getFightById]);
+    }, [params]);
 
     return (
         <div className={styles.wrapper}>
@@ -51,8 +61,8 @@ export default function Page({ params }: { params: Promise<{ id: number }> }) {
                 <div className={styles.info}>
                     <div className={styles.fightName}>
                     <span
-                        className={fightById?.firstWon ? styles.won : ''}>{fightById?.firstPokemon?.name ?? 'Неизвестный'}</span> vs <span
-                        className={fightById?.firstWon ? '' : styles.won}>{fightById?.secondPokemon?.name ?? 'Неизвестный'}</span>
+                        className={fightById?.isCompleted && fightById?.firstWon ? styles.won : ''}>{fightById?.firstPokemon?.name ?? 'Неизвестный'}</span> vs <span
+                        className={fightById?.isCompleted && !fightById?.firstWon ? styles.won : ''}>{fightById?.secondPokemon?.name ?? 'Неизвестный'}</span>
                     </div>
                     <div className={styles.title}>
                         Локация:
@@ -66,29 +76,40 @@ export default function Page({ params }: { params: Promise<{ id: number }> }) {
                         Бой окончен?
                         <span className={styles.text}>{fightById?.isCompleted ? 'Да' : 'Нет'}</span>
                     </div>
-                    <div className={styles.title}>
-                        Победитель:
-                        <span
-                            className={styles.text}>{fightById?.firstWon ? fightById?.firstPokemon?.name ?? 'Неизвестно' : fightById?.secondPokemon?.name ?? 'Неизвестно'}</span>
-                    </div>
+                    {fightById?.isCompleted && (
+                        <div className={styles.title}>
+                            Победитель:
+                            <span
+                                className={styles.text}>{fightById?.firstWon ? fightById?.firstPokemon?.name ?? 'Неизвестно' : fightById?.secondPokemon?.name ?? 'Неизвестно'}</span>
+                        </div>
+                    )}
                 </div>
-                <div className={styles.pokemons}>
-                    <PokemonCard
-                        pokemon={fightById?.firstPokemon}
-                        image={PokeballImage}
-                        coefficient={fightById?.coefficientFirst ?? 0}
-                        won={fightById?.firstWon}
-                    />
-                    <div className={styles.divider}>
-                        vs
+                <div className={styles.columnWrapper}>
+                    <div className={styles.pokemons}>
+                        <PokemonCard
+                            pokemon={fightById?.firstPokemon}
+                            image={PokeballImage}
+                            coefficient={fightById?.coefficientFirst ?? 0}
+                            won={fightById?.isCompleted && fightById?.firstWon}
+                        />
+                        <div className={styles.divider}>
+                            vs
+                        </div>
+                        <PokemonCard
+                            pokemon={fightById?.secondPokemon}
+                            image={UltraballImage}
+                            coefficient={fightById?.coefficientSecond ?? 0}
+                            won={fightById?.isCompleted && !fightById?.firstWon}
+                        />
                     </div>
-                    <PokemonCard
-                        pokemon={fightById?.secondPokemon}
-                        image={UltraballImage}
-                        coefficient={fightById?.coefficientSecond ?? 0}
-                        won={!fightById?.firstWon}
-                    />
+                    {!fightById?.isCompleted && (
+                        <div className={styles.buttons}>
+                            <button className={styles.button} onClick={startFightHandler}>Начать бой</button>
+                            <button className={styles.betButton}>Сделать ставку</button>
+                        </div>
+                    )}
                 </div>
+
             </div>
         </div>
     )
