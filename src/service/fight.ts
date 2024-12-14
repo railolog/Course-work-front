@@ -1,5 +1,4 @@
 import {Fight} from "@/types/fights";
-import axios from "axios";
 import {BASE_URL} from "@/constants/url";
 import axiosInstance from "@/service/index";
 

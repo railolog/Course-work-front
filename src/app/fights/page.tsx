@@ -4,7 +4,7 @@ import styles from './page.module.css';
 import {useFights} from "@/context/fight";
 import {FightCard} from "@/components/FightCard";
 import React from "react";
-import {CREATE_FIGHT_URL, FIGHTS_URL} from "@/constants/url";
+import {CREATE_FIGHT_URL} from "@/constants/url";
 import {redirect} from "next/navigation";
 
 export default function Page() {

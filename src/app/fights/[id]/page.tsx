@@ -6,7 +6,7 @@ import React, {useEffect} from "react";
 import Image from "next/image";
 import PokeballImage from '@/images/pokeball.png';
 import UltraballImage from '@/images/ultra-ball.png';
-import {AngleRightIcon, ArrowLeftIcon} from "@/icons/index";
+import {AngleRightIcon} from "@/icons/index";
 import {redirect} from "next/navigation";
 import {FIGHTS_URL} from "@/constants/url";
 

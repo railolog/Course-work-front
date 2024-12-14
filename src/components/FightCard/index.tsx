@@ -11,7 +11,7 @@ type FightCardProps = {
     fight: Fight;
 }
 
-export const FightCard: React.FC<FightCardProps> = ({ fight: { id, firstPokemon, secondPokemon, coefficientFirst, coefficientSecond, isCompleted, firstWon }}) => {
+export const FightCard: React.FC<FightCardProps> = ({ fight: { id, firstPokemon, secondPokemon, coefficientFirst, coefficientSecond, firstWon }}) => {
     function openFightCard(id: number) {
         redirect(`${FIGHTS_URL}/${id}`);
     }
