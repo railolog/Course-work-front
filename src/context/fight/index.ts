@@ -1,12 +1,17 @@
 import {createContext, useContext} from "react";
 import {Fight} from "@/types/fights";
 import {Pokemon} from "@/types/pokemons";
+import {Location} from "@/types/location";
+import {createFightInput} from "@/service/fight";
 
 interface FightContextProps {
     fights: Fight[];
     pokemons: Pokemon[];
+    locations: Location[];
     getFights: () => Promise<Fight[]>;
+    createFight: (input: createFightInput) => Promise<Fight>;
     getPokemons: () => Promise<Pokemon[]>;
+    getLocations: () => Promise<Location[]>;
     fightById: Fight | undefined;
     getFightById: (id: number) => Promise<Fight>;
 }

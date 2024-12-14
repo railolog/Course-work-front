@@ -45,8 +45,7 @@
     padding: 16px;
     border-radius: 12px;
 
-    height: 160px;
-    width: 313px;
+    min-width: 313px;
     cursor: pointer;
 }
 
@@ -77,4 +76,36 @@
     align-items: center;
     justify-content: center;
     border-radius: 8px;
+}
+
+.button {
+    width: 100%;
+    padding: 8px 16px;
+    background-color: var(--accept-color);
+    border-radius: 8px;
+
+    box-shadow: none;
+    transition: all 0.4s ease;
+}
+
+.button:hover {
+    box-shadow: 0 0 20px var(--accept-color-shadow);
+}
+
+.button:disabled {
+    background-color: var(--block-bg-2);
+}
+
+.betButton {
+    width: 100%;
+    padding: 8px 16px;
+    background-color: var(--accent-color);
+    border-radius: 8px;
+
+    box-shadow: none;
+    transition: all 0.4s ease;
+}
+
+.betButton:hover {
+    box-shadow: 0 0 20px var(--accent-color-shadow);
 }

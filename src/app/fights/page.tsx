@@ -3,12 +3,16 @@
 import styles from './page.module.css';
 import {useFights} from "@/context/fight";
 import {FightCard} from "@/components/FightCard";
-import React from "react";
+import React, {useEffect} from "react";
 import {CREATE_FIGHT_URL} from "@/constants/url";
 import {redirect} from "next/navigation";
 
 export default function Page() {
-    const { fights } = useFights();
+    const { fights, getFights } = useFights();
+
+    useEffect(() => {
+        getFights();
+    }, []);
 
     return (
         <>
