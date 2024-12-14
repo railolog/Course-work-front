@@ -50,3 +50,18 @@
     text-wrap: balance;
     width: 500px;
 }
+
+.button {
+    background-color: var(--accent-color);
+    width: 140px;
+    height: 50px;
+    border-radius: 25px;
+
+    column-gap: 10px;
+    box-shadow: none;
+    transition: all 0.4s ease;
+}
+
+.button:hover {
+    box-shadow: 0 0 20px var(--accent-color-shadow);
+}
