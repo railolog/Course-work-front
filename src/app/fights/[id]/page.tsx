@@ -69,7 +69,7 @@ export default function Page({ params }: { params: Promise<{ id: number }> }) {
                     <div className={styles.title}>
                         Победитель:
                         <span
-                            className={styles.text}>{fightById?.firstWon ? fightById?.firstPokemon.name : fightById?.secondPokemon.name}</span>
+                            className={styles.text}>{fightById?.firstWon ? fightById?.firstPokemon?.name ?? 'Неизвестно' : fightById?.secondPokemon?.name ?? 'Неизвестно'}</span>
                     </div>
                 </div>
                 <div className={styles.pokemons}>
