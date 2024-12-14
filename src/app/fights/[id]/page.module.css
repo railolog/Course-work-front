@@ -135,6 +135,19 @@
     box-shadow: 0 0 20px var(--accent-color-shadow);
 }
 
+.bets {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+}
+
+.subtitle {
+    font-size: var(--font-size-s);
+    width: 100%;
+    text-align: center;
+}
+
 @media (max-width: 1260px) {
     .pokemons {
         width: 100%;

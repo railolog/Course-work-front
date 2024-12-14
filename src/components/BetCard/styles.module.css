@@ -1,0 +1,65 @@
+.wrapper {
+    width: 100%;
+    padding: 16px;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: var(--block-bg-2);
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.pokemons, .pokemon, .column, .result {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 8px;
+}
+
+.pokemons {
+    padding: 0 16px;
+    font-size: var(--font-size-xxs);
+}
+
+.column, .result {
+    padding: 0 16px;
+    border-left: 1px solid var(--block-bg-4);
+}
+
+.id {
+    color: var(--caption-text);
+    padding: 0 16px 0 0;
+    border-right: 1px solid var(--block-bg-4);
+}
+
+.result {
+    color: var(--accent-color);
+}
+
+.shade {
+    color: var(--caption-text);
+}
+
+.button {
+    width: 140px;
+    padding: 8px 16px;
+    background-color: var(--accept-color);
+    border-radius: 8px;
+
+    box-shadow: none;
+    transition: all 0.4s ease;
+}
+
+.button:hover {
+    box-shadow: 0 0 20px var(--accept-color-shadow);
+}

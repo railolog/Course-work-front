@@ -46,6 +46,7 @@ export default function Page() {
                 });
                 const fight = await getFightById(result.id);
                 setFight(fight);
+                toast.success("Бой создан! Время ставить ставки!", DEFAULT_TOAST_OPTIONS)
             } else {
                 toast.error("Необходимо выбрать разных покемонов", DEFAULT_TOAST_OPTIONS);
             }
@@ -53,7 +54,7 @@ export default function Page() {
     }
 
     if (loading) {
-        return <div className={styles.loading}>Загрузка данных...</div>;
+        return <div className={styles.wrapper}>Загрузка данных...</div>;
     }
 
     return (

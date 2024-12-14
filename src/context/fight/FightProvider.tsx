@@ -7,6 +7,8 @@ import fightService, {createFightInput} from "@/service/fight";
 import {Pokemon} from "@/types/pokemons";
 import pokemonService from "@/service/pokemon";
 import {Location} from "@/types/location";
+import {Bet} from "@/types/user";
+import betService, {BetInput} from "@/service/bet";
 
 type AuthProviderProps = {
     children: ReactNode;
@@ -17,6 +19,7 @@ export const FightsProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const [fightById, setFightById] = useState<Fight>({} as Fight);
     const [pokemons, setPokemons] = useState<Pokemon[]>([]);
     const [locations, setLocations] = useState<Location[]>([]);
+    const [bets, setBets] = useState<Bet[]>([]);
 
     const getFights = async () => {
         try {
@@ -74,8 +77,34 @@ export const FightsProvider: React.FC<AuthProviderProps> = ({ children }) => {
         }
     };
 
+    const getUserBets = async (): Promise<Bet[]> => {
+        try {
+            const result =  await betService.userBets();
+            setBets(result);
+            return result;
+        } catch (error) {
+            throw error;
+        }
+    };
+
+    const createBet = async (input: BetInput): Promise<Bet> => {
+        try {
+            return await betService.createBet(input);
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    const getBetsByFight = async (id: number): Promise<Bet[]> => {
+        try {
+            return await betService.betsByFight(id);
+        } catch (error) {
+            throw error;
+        }
+    }
+
     return (
-        <FightContext.Provider value={{ fights, pokemons, locations, getFights, createFight, getPokemons, getLocations, fightById, getFightById, startFight }}>
+        <FightContext.Provider value={{ fights, pokemons, locations, getFights, createFight, getPokemons, getLocations, fightById, getFightById, startFight, bets, getUserBets, createBet, getBetsByFight }}>
             {children}
         </FightContext.Provider>
     );

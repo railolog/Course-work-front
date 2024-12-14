@@ -9,43 +9,56 @@ import {FIGHTS_URL} from "@/constants/url";
 import {useFights} from "@/context/fight";
 import toast from "react-hot-toast";
 import {DEFAULT_TOAST_OPTIONS} from "@/constants/toast";
+import {BetModal} from "@/components/modals/BetModal";
+import {useUser} from "@/context/user";
 
 type FightCardProps = {
     fight: Fight;
 }
 
-export const FightCard: React.FC<FightCardProps> = ({ fight: { id, firstPokemon, secondPokemon, isCompleted, coefficientFirst, coefficientSecond, firstWon }}) => {
+export const FightCard: React.FC<FightCardProps> = ({ fight }) => {
     const { startFight, getFights } = useFights();
+    const { getBalance } = useUser();
+    const [showModal, setShowModal] = useState<boolean>(false);
 
     function openFightCard() {
-        redirect(`${FIGHTS_URL}/${id}`);
+        redirect(`${FIGHTS_URL}/${fight.id}`);
+    }
+
+    function openModal(event: React.MouseEvent<HTMLButtonElement>) {
+        event.stopPropagation();
+        setShowModal(true);
     }
 
     async function startFightHandler(event: React.MouseEvent<HTMLButtonElement>) {
         event.stopPropagation();
         try {
-            await startFight(id);
+            await startFight(fight.id);
             await getFights();
+            await getBalance();
         } catch (error) {
             toast.error('Ошибка при запуске боя', DEFAULT_TOAST_OPTIONS);
         }
     }
 
     return (
-        <div className={styles.container} onClick={openFightCard}>
-            <div className={styles.pokemons}>
-                <Pokemon name={firstPokemon.name} type={firstPokemon.types?.join(', ')} image={PokeballImage} won={isCompleted && firstWon} coefficient={coefficientFirst}/>
-                <p>vs</p>
-                <Pokemon name={secondPokemon.name} type={secondPokemon.types?.join(', ')} image={UltraballImage} won={isCompleted && !firstWon} coefficient={coefficientSecond}/>
-            </div>
-            {isCompleted ? (
-                <button disabled className={styles.button}>Завершен</button>
-            ) : (
-                <div className={styles.buttons}>
-                    <button className={styles.button} onClick={startFightHandler}>Начать бой</button>
-                    <button className={styles.betButton}>Сделать ставку</button>
+        <>
+            <div className={styles.container} onClick={openFightCard}>
+                <div className={styles.pokemons}>
+                    <Pokemon name={fight.firstPokemon.name} type={fight.firstPokemon.types?.join(', ')} image={PokeballImage} won={fight.isCompleted && fight.firstWon} coefficient={fight.coefficientFirst}/>
+                    <p>vs</p>
+                    <Pokemon name={fight.secondPokemon.name} type={fight.secondPokemon.types?.join(', ')} image={UltraballImage} won={fight.isCompleted && !fight.firstWon} coefficient={fight.coefficientSecond}/>
                 </div>
-            )}
-        </div>
+                {fight.isCompleted ? (
+                    <button disabled className={styles.button}>Завершен</button>
+                ) : (
+                    <div className={styles.buttons}>
+                        <button className={styles.button} onClick={startFightHandler}>Начать бой</button>
+                        <button className={styles.betButton} onClick={openModal}>Сделать ставку</button>
+                    </div>
+                )}
+            </div>
+            {showModal && <BetModal onClose={() => setShowModal(false)} fight={fight}/>}
+        </>
     )
 }

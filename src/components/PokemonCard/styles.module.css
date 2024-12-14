@@ -26,11 +26,11 @@
 
 
 .name {
-    font-size: var(--font-size-s);
+    font-size: var(--font-size-xs);
 }
 
 .types {
-    font-size: var(--font-size-xxs);
+    font-size: var(--font-size-xxxs);
     font-style: italic;
 }
 

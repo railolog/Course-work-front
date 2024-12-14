@@ -3,6 +3,8 @@ import {Fight} from "@/types/fights";
 import {Pokemon} from "@/types/pokemons";
 import {Location} from "@/types/location";
 import {createFightInput} from "@/service/fight";
+import {Bet} from "@/types/user";
+import {BetInput} from "@/service/bet";
 
 interface FightContextProps {
     fights: Fight[];
@@ -15,6 +17,10 @@ interface FightContextProps {
     getLocations: () => Promise<Location[]>;
     fightById: Fight | undefined;
     getFightById: (id: number) => Promise<Fight>;
+    bets: Bet[];
+    getUserBets: () => Promise<Bet[]>;
+    createBet: (input: BetInput) => Promise<Bet>;
+    getBetsByFight: (id: number) => Promise<Bet[]>;
 }
 
 export const useFights = (): FightContextProps => {
